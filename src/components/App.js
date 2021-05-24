@@ -3,10 +3,13 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 
 class App extends React.Component {
-  onSearchSubmit(term){
-    axios.get(`https://restcountries.eu/rest/v2/name/${term}`, {
-      params: { query: term }
-    });
+  async onSearchSubmit(term){
+    const response = await axios
+      .get(`https://restcountries.eu/rest/v2/name/${term}`, {
+        params: { query: term }
+      }).then((response) => {
+        console.log(response.data[0].capital);
+      });
   }
 
   render() {
