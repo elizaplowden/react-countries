@@ -8,7 +8,7 @@ class App extends React.Component {
 
   onSearchSubmit = async term => {
     const response = await axios
-      .get(`https://restcountries.eu/rest/v2/name/${term}`, {
+      .get(`/rest/v2/name/${term}`, {
         params: { query: term }
       });
 
