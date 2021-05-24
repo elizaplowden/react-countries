@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './SearchBar';
 import countries from '../api/countries';
+import CountryList from './CountryList';
 
 class App extends React.Component {
   // default property
@@ -22,9 +23,10 @@ class App extends React.Component {
     return(
       <div className="ui container" style={{ marginTop: '10px'}}>
        <SearchBar onSubmit={this.onSearchSubmit}/>
-       <h2>{this.state.name}</h2>
+  {/*     <h2>{this.state.name}</h2>
        <p>Capital: {this.state.capital}</p>
-       <p>Population: {this.state.population}</p>
+       <p>Population: {this.state.population}</p>*/}
+       <CountryList />
       </div>
     );
   }
