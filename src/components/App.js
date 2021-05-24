@@ -1,13 +1,13 @@
 import React from 'react';
-import axios from 'axios';
 import SearchBar from './SearchBar';
+import countries from '../api/countries';
 
 class App extends React.Component {
   // default property
   state = { name: '' };
 
   onSearchSubmit = async term => {
-    const response = await axios
+    const response = await countries
       .get(`/rest/v2/name/${term}`, {
         params: { query: term }
       });
