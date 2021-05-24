@@ -4,7 +4,9 @@ import SearchBar from './SearchBar';
 
 class App extends React.Component {
   onSearchSubmit(term){
-
+    axios.get(`https://restcountries.eu/rest/v2/name/${term}`, {
+      params: { query: term }
+    });
   }
 
   render() {
