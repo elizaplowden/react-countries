@@ -3,19 +3,28 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 
 class App extends React.Component {
-  async onSearchSubmit(term){
+  // default property
+  state = { name: '' };
+
+  onSearchSubmit = async term => {
     const response = await axios
       .get(`https://restcountries.eu/rest/v2/name/${term}`, {
         params: { query: term }
-      }).then((response) => {
-        console.log(response.data[0].capital);
       });
+
+      this.setState({
+        name: response.data[0].name,
+        capital: response.data[0].capital,
+        population: response.data[0].population });
   }
 
   render() {
     return(
       <div className="ui container" style={{ marginTop: '10px'}}>
        <SearchBar onSubmit={this.onSearchSubmit}/>
+       <h2>{this.state.name}</h2>
+       <p>Capital: {this.state.capital}</p>
+       <p>Population: {this.state.population}</p>
       </div>
     );
   }
